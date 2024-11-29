@@ -19,7 +19,7 @@ data class ResultDto(
     val vote_count: Int
 )
 
-fun ResultDto.toResult() = ResultModel(
+fun ResultDto.toResultModel() = ResultModel(
     backdropPath = backdrop_path,
     id = id,
     originalLanguage = original_language,
