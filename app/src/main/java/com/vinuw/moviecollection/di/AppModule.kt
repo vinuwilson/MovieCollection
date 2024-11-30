@@ -4,6 +4,7 @@ import com.vinuw.moviecollection.data.api.MovieAPI
 import com.vinuw.moviecollection.data.repository.MovieRepositoryImp
 import com.vinuw.moviecollection.data.repository.MovieService
 import com.vinuw.moviecollection.domain.repository.MovieRepository
+import com.vinuw.moviecollection.utils.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,7 +29,7 @@ class AppModule {
     @Singleton
     @Provides
     fun provideRetrofit(): Retrofit = Retrofit.Builder()
-        .baseUrl("")
+        .baseUrl(BASE_URL)
         .client(OkHttpClient())
         .addConverterFactory(GsonConverterFactory.create())
         .build()

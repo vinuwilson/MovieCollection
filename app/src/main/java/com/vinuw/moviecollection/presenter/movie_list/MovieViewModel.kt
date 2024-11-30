@@ -6,7 +6,7 @@ import com.vinuw.moviecollection.domain.usecase.GetMovieList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
@@ -29,13 +29,25 @@ class MovieViewModel @Inject constructor(
 
     private fun getAllMovieList() {
         viewModelScope.launch {
-            getMovieList.getAllMovieList().collectLatest { result ->
-                _movieListState.update {
-                    it.copy(
-                        isLoading = false,
-                        movieList = result.getOrDefault(emptyList())
-                    )
-                }
+//            getMovieList.getAllMovieList().collectLatest { result ->
+//                _movieListState.update {
+//                    it.copy(
+//                        isLoading = false,
+//                        movieList = result.getOrDefault(emptyList())
+//                    )
+//                }
+//            }
+
+            _movieListState.update {
+                it.copy(
+                    isLoading = true
+                )
+            }
+            _movieListState.update {
+                it.copy(
+                    isLoading = false,
+                    movieList = getMovieList.getAllMovieList().first().getOrNull()
+                )
             }
         }
     }

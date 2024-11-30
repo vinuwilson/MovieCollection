@@ -4,3 +4,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 object MovieCollection
+
+@Serializable
+object MovieListScreen
