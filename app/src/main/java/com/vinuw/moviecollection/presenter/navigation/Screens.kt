@@ -7,3 +7,8 @@ object MovieCollection
 
 @Serializable
 object MovieListScreen
+
+@Serializable
+data class MovieDetailsScreen(
+    val movieID: Int
+)

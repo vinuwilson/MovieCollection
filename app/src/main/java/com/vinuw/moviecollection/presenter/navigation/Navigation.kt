@@ -10,6 +10,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
+import androidx.navigation.toRoute
+import com.vinuw.moviecollection.presenter.movie_details.MovieDetails
 import com.vinuw.moviecollection.presenter.movie_list.MovieList
 import com.vinuw.moviecollection.presenter.movie_list.MovieViewModel
 import com.vinuw.moviecollection.utils.sharedViewModel
@@ -39,8 +41,24 @@ fun Navigation() {
                     MovieList(
                         movieState = movieState.value
                     ) { movieID ->
-
+                        navController.navigate(
+                            MovieDetailsScreen(
+                                movieID = movieID
+                            )
+                        )
                     }
+                }
+
+                composable<MovieDetailsScreen> { entry ->
+                    val viewModel =
+                        entry.sharedViewModel<MovieViewModel>(navController = navController)
+                    val movieState = viewModel.movieListState.collectAsStateWithLifecycle()
+                    val args = entry.toRoute<MovieDetailsScreen>()
+
+                    MovieDetails(
+                        movieState = movieState.value,
+                        movieId = args.movieID
+                    )
                 }
             }
         }
