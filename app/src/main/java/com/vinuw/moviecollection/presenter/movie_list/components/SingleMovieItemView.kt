@@ -70,6 +70,7 @@ fun SingleMovieItemView(
             )
 
             Box(
+                modifier = Modifier.fillMaxHeight(),
                 contentAlignment = Alignment.Center
             ) {
                 Text(
