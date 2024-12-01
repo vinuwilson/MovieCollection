@@ -12,3 +12,6 @@ object MovieListScreen
 data class MovieDetailsScreen(
     val movieID: Int
 )
+
+@Serializable
+object PersonsScreen

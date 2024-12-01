@@ -3,4 +3,6 @@
     <string name="app_title">Movie List</string>
     <string name="app_details_title">Movie Details</string>
     <string name="calender_icon">Calender Icon</string>
+    <string name="movies">Movies</string>
+    <string name="persons">Persons</string>
 </resources>

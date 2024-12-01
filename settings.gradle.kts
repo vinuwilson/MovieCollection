@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Movie Collection"
 include(":app")
- 
+include(":persons")
