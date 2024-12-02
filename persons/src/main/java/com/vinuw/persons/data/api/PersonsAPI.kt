@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface PersonsAPI {
 
-    @GET("3/persons/popular?api_key=${BuildConfig.API_KEY}")
+    @GET("3/person/popular?api_key=${BuildConfig.API_KEY}")
     suspend fun getAllPersons() : PersonsDto
 }

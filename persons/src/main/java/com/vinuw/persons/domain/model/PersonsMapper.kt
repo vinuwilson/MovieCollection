@@ -6,8 +6,8 @@ import com.vinuw.persons.data.dto.toPersonsModel
 import javax.inject.Inject
 
 class PersonsMapper @Inject constructor() : Function1<List<ResultDto>, List<PersonsModel>> {
-    override fun invoke(movieListDto: List<ResultDto>): List<PersonsModel> {
-        return movieListDto.map {
+    override fun invoke(personsDto: List<ResultDto>): List<PersonsModel> {
+        return personsDto.map {
             it.toPersonsModel()
         }
     }

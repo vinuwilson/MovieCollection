@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
     kotlin("kapt")
     alias(libs.plugins.daggerHilt)
 }
@@ -62,7 +63,6 @@ dependencies {
 
     //Hilt
     implementation(libs.hilt.android)
-    testImplementation(project(":app"))
     kapt(libs.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
 
@@ -70,6 +70,11 @@ dependencies {
     implementation(libs.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
 
+    //Coil
+    implementation(libs.coil.compose)
+
+    debugImplementation(libs.ui.tooling)
+    
     testImplementation(libs.junit)
     testImplementation(libs.mockito.kotlin)
     testImplementation(libs.mockito.inline)

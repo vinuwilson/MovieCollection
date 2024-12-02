@@ -12,7 +12,7 @@ class PersonsService @Inject constructor(
     private val api: PersonsAPI,
     private val mapper: PersonsMapper
 ) {
-    suspend fun getAllPersons(): Flow<Result<List<PersonsModel>>> {
+    fun getAllPersons(): Flow<Result<List<PersonsModel>>> {
         return flow {
             emit(Result.success(mapper.invoke(api.getAllPersons().results)))
         }.catch {

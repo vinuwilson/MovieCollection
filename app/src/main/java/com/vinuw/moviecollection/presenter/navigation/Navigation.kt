@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -28,6 +29,8 @@ import com.vinuw.moviecollection.presenter.movie_details.MovieDetails
 import com.vinuw.moviecollection.presenter.movie_list.MovieList
 import com.vinuw.moviecollection.presenter.movie_list.MovieViewModel
 import com.vinuw.moviecollection.utils.sharedViewModel
+import com.vinuw.persons.presenter.persons_info.PersonInfo
+import com.vinuw.persons.presenter.persons_info.PersonsViewModel
 
 @SuppressLint("RestrictedApi")
 @Composable
@@ -108,12 +111,19 @@ fun Navigation() {
                     MovieDetails(
                         movieState = movieState.value,
                         movieId = args.movieID
-                    )
+                    ) {
+                        navController.navigateUp()
+                    }
                 }
+            }
 
-                composable<PersonsScreen> {
+            composable<PersonsScreen> {
+                val viewModel = hiltViewModel<PersonsViewModel>()
+                val personsState = viewModel.personsState.collectAsStateWithLifecycle()
 
-                }
+                PersonInfo(
+                    personsState = personsState.value
+                )
             }
         }
     }
